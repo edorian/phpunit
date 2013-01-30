@@ -23,6 +23,4 @@ before_script:
 
 script: $SCRIPT --configuration ./build/travis-ci.xml
 
-notifications:
-  email: false
-  irc: "irc.freenode.org#phpunit"
+
