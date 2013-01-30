@@ -19,8 +19,9 @@ before_script:
     - git clone --branch=master --depth=100 --quiet git://github.com/pear/pear-core.git vendor/pear-core
     - git clone --branch=trunk --depth=100 --quiet git://github.com/pear/Console_Getopt.git vendor/console-getopt
     - sh -c "if [ '$INSTALL_PHP_INVOKER' = '1' ]; then git clone --branch=master --depth=100 --quiet git://github.com/sebastianbergmann/php-invoker.git vendor/php-invoker; fi"
+    - SCRIPT="php -d include_path=vendor/php-text-template:vendor/php-token-stream:vendor/php-file-iterator:vendor/php-code-coverage:vendor/phpunit-mock-objects:vendor/php-timer:vendor/version:vendor/pear-core:vendor/console-getopt:. ./phpunit.php"
 
-script: php -d include_path=vendor/php-text-template:vendor/php-token-stream:vendor/php-file-iterator:vendor/php-code-coverage:vendor/phpunit-mock-objects:vendor/php-timer:vendor/version:vendor/pear-core:vendor/console-getopt:. ./phpunit.php --configuration ./build/travis-ci.xml
+script: $SCRIPT --configuration ./build/travis-ci.xml
 
 notifications:
   email: false
